@@ -24,29 +24,7 @@ const [expiry, setExpiry] = useState("");
 const [loading, setLoading] = useState<boolean>(true);
 const [cvv, setCvv] = useState("");
 const handleCardNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
- const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault(); // stop default form submission
-
-  // Check if required fields are empty
-  if (!address.trim() || !time.trim() || !phone.trim() || !cardNumber.trim() || !expiry.trim() || !cvv.trim()) {
-    alert("Please fill in all required fields"); // or use toast
-    return; // stop submission
-  }
-
-  // Continue your submit logic
-  console.log({
-    address,
-    time,
-    instruction,
-    phone,
-    cardNumber,
-    expiry,
-    cvv,
-  });
-
-  // Example: navigate to success page
-  navigate("/success");
-};
+ 
 
   let value = e.target.value.replace(/\D/g, ""); // remove non-digits
 

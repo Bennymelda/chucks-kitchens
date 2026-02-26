@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import { useState } from 'react';
 import Home from './home'
 import Page from './page'
@@ -21,7 +21,7 @@ export interface Product {
 }
 
 function App() {
-const [array, setArray]=useState<Product[]>([{
+const [array]=useState<Product[]>([{
 id:1,
 name:'Jollef Rice & Fried Chicken',
 img:'images/img 5.png',
