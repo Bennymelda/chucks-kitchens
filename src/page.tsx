@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import type { Product } from './App';
 import {IoIosAdd} from "react-icons/io"
 import Footer from './fotter'
-import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 interface Products {
   array: Product[];
@@ -14,22 +13,33 @@ interface Products {
 
 export default function Page({array,setCart}:Products) {
  
- 
+const [viewAll, setViewAll] = useState({
+  popular: false,
+  food: false,
+  soup: false
+});
 const [activeCategory, setActiveCategory] = useState("all");
 
   
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile] = useState(false);
 const checks=array.filter(i=> i.sort === 'pos')
 const food=array.filter(i=> i.sort === 'jollef')
 const soup=array.filter(i=> i.sort === 'soup')
-  const getVisibleItems = () => {
-    if (typeof window === "undefined") return checks.slice(0, 3); // fallback
-    const width = window.innerWidth;
-    if (width >= 1280) return checks.slice(0, 6); // desktop
-    if (width >= 768) return checks.slice(0, 6); // laptop/tablet
-    return checks.slice(0, 3); // mobile
-  };
 
+const getVisibleItems = (category: "popular" | "food" | "soup") => {
+  let items: Product[] = [];
+  if (category === "popular") items = checks;
+  if (category === "food") items = food;
+  if (category === "soup") items = soup;
+
+  if (viewAll[category]) return items; // show all if toggled
+
+  if (typeof window === "undefined") return items.slice(0, 3);
+  const width = window.innerWidth;
+  if (width >= 1280) return items.slice(0, 6);
+  if (width >= 768) return items.slice(0, 6);
+  return items.slice(0, 3);
+};
   function addCart(product: Product) {
   setCart(prev => {
     // Check if item already exists
@@ -48,22 +58,25 @@ const soup=array.filter(i=> i.sort === 'soup')
     }
   });
 }
-
-  const [visibleItems, setVisibleItems] = useState(getVisibleItems());
-const navigate = useNavigate();
-  // Update on resize
-  if (typeof window !== "undefined") {
-    window.addEventListener("resize", () => {
-      setVisibleItems(getVisibleItems());
+const [visibleItems, setVisibleItems] = useState({
+  popular: getVisibleItems("popular"),
+  food: getVisibleItems("food"),
+  soup: getVisibleItems("soup")
+});
+ 
+useEffect(() => {
+  const handleResize = () => {
+    setVisibleItems({
+      popular: getVisibleItems("popular"),
+      food: getVisibleItems("food"),
+      soup: getVisibleItems("soup"),
     });
-  }
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    handleResize(); // initial check
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  };
 
+  window.addEventListener("resize", handleResize);
+  handleResize(); // initial check
+  return () => window.removeEventListener("resize", handleResize);
+}, [viewAll, isMobile, array]);
   return (
     <div>
       
@@ -132,11 +145,11 @@ const navigate = useNavigate();
       <div className='pt-[20px] md:pt-[0px] px-[10px] leading-[24px] bg-[#F3F4F6] gap-[20px] '>
         <h1 className='pb-2 font-semibold text-[16px]  md:font-bold md:text-[32px] md:leading-[42px] text-[#1F2937]'>Popular</h1>
         <section id='popular' className='flex flex-col gap-6 md:grid md:grid-cols-3 md:gap-[40px]'>
-          {visibleItems.map(product => (
+          {visibleItems.popular.map(product => (
         <div key={product.id} className='md:pb-[46px] bg-white md:rounded-[14px] rounded-[8px] p-[6px] gap-[11px] md:gap-[39px] flex md:flex-col'>
           
           <img
-          className='md:w-full w-[108.14px] h-[99px] md:h-[222px] rounded-[3.18px] md:w-[389.78px] md:rounded-tl-[14px] md:rounded-tr-[14px]'
+          className='md:w-full object-cover w-[108.14px] h-[99px] md:h-[222px] rounded-[3.18px] md:w-[389.78px] md:rounded-tl-[14px] md:rounded-tr-[14px]'
             src={isMobile ? product.imgMobile : product.imgDesktop}
             alt={product.name}
           />
@@ -158,18 +171,23 @@ const navigate = useNavigate();
         </div>
       ))}
         </section>
-         <p className='text font-[400] text-center pt-5 pb-8 text-[#1E88E5] tracking-[2%] leading-[180%] text-[16px] md:hidden'>View All Categories</p>
-  
+       
+  <p
+  className='text font-[400] text-center pt-5 pb-8 text-[#1E88E5] tracking-[2%] leading-[180%] text-[16px] md:hidden'
+  onClick={() => setViewAll(prev => ({ ...prev, popular: !prev.popular }))}
+>
+  {viewAll.popular ? "Show Less" : "View All Categories"}
+</p>
       </div>
       
      <div className='pt-[20px]  md:pt-[0px] px-[10px] gap-[21px] leading-[24px] bg-[#F3F4F6] gap-[20px]'>
         <h1 className='pb-2 font-semibold text-[16px] md:font-bold md:text-[32px] md:leading-[42px] text-[#1F2937]'>Jollef Rice Entrees</h1>
         <section id='food' className='flex flex-col gap-6 md:grid md:grid-cols-3 md:gap-[40px]'>
-          {food.map(product => (
+          {visibleItems.food.map(product => (
         <div key={product.id} className='md:pb-[46px] bg-white md:rounded-[14px]  rounded-[8px] p-[6px] gap-[11px] md:gap-[39px] flex md:flex-col'>
           
           <img
-          className='md:w-full w-[108.14px] h-[99px] md:h-[222px] md:w-[389.78px] rounded-[3.18px] md:rounded-tl-[14px] md:rounded-tr-[14px]'
+          className='md:w-full object-cover w-[108.14px] h-[99px] md:h-[222px] md:w-[389.78px] rounded-[3.18px] md:rounded-tl-[14px] md:rounded-tr-[14px]'
             src={isMobile ? product.imgMobile : product.imgDesktop}
             alt={product.name}
           />
@@ -191,17 +209,22 @@ const navigate = useNavigate();
         </div>
       ))}
         </section>
-         <p className=' text font-[400] text-center pt-5 pb-8 text-[#1E88E5] tracking-[2%] leading-[180%] text-[16px] md:hidden' >View All Categories</p>
-  
+    
+  <p
+ className=' text font-[400] text-center pt-5 pb-8 text-[#1E88E5] tracking-[2%] leading-[180%] text-[16px] md:hidden' 
+  onClick={() => setViewAll(prev => ({ ...prev, food: !prev.food }))}
+>
+  {viewAll.food ? "Show Less" : "View All Categories"}
+</p>
       </div>
        <div className='pt-[20px] md:pt-[0px] px-[10px] gap-[21px] leading-[24px] bg-[#F3F4F6] gap-[20px]'>
         <h1 className='pb-2 font-semibold text-[16px] md:font-bold md:text-[32px] md:leading-[42px] text-[#1F2937]'>Swallow & soups</h1>
         <section id='soup' className='flex flex-col gap-6 md:grid md:grid-cols-3 md:gap-[40px]'>
-          {soup.map(product => (
+          {visibleItems.soup.map(product => (
         <div key={product.id} className='md:pb-[46px] bg-white  md:rounded-[14px] rounded-[8x] p-[6px] gap-[11px] md:gap-[39px] flex md:flex-col'>
           
           <img
-          className='md:w-full w-[108.14px] h-[99px] md:h-[222px] md:w-[389.78px] rounded-[3.18px] md:rounded-tl-[14px] md:rounded-tr-[14px]'
+          className='md:w-full object-cover w-[108.14px] h-[99px] md:h-[222px] md:w-[389.78px] rounded-[3.18px] md:rounded-tl-[14px] md:rounded-tr-[14px]'
             src={isMobile ? product.imgMobile : product.imgDesktop}
             alt={product.name}
           />
@@ -223,8 +246,8 @@ const navigate = useNavigate();
         </div>
       ))}
         </section>
-         <p className='text font-[400] text-center pt-5 pb-8 text-[#1E88E5] tracking-[2%] leading-[180%] text-[16px] md:hidden' onClick={() => navigate("/detail")}
->View All Categories</p>
+         <p onClick={() => setViewAll(prev => ({ ...prev, soup: !prev.soup }))} className='text font-[400] text-center pt-5 pb-8 text-[#1E88E5] tracking-[2%] leading-[180%] text-[16px] md:hidden' 
+> {viewAll.soup ? "Show Less" : "View All Categories"}</p>
   
       </div>
       </div>

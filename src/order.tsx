@@ -175,7 +175,7 @@ return(
     <div className=' w-[40%] md:w-[30%] py-2 md:py-4 text-white font-medium  mx-auto  rounded-4xl text-center mt-4 mb-6 bg-[#FF7A18]'>
       <button className='cursor-pointer' onClick={() => setStep("delivery")}>Confirm Order</button>
     </div>
-    <Footer />
+ 
     </section>
     )}
 
@@ -231,7 +231,7 @@ return(
         <button className=" font-semibold whitespace-nowrap text-[16px] leading-[24px] py-[18px] text-white w-full bg-[#FF7A18] gap-[16px] rounded-[10px]" onClick={() => setStep("order")}>Proceed to checkout</button>
     </div>
     </div>
-     <Footer />
+     
       </section>
      
     )}
@@ -265,7 +265,7 @@ onChange={handlePhoneChange} type="text"  placeholder="+234 903 448 1350" classN
         <button className="px-10 border-0 whitespace-nowrap text-white rounded-[10px]  py-4 bg-[#FF7A18]" onClick={() => setStep("bank")}>Proceed to Payment</button>
     </div>
     </div>
-    <Footer />
+   
 </section>
     )}
     {step === "bank" && (
@@ -352,7 +352,7 @@ onChange={handlePhoneChange} type="text"  placeholder="+234 903 448 1350" classN
          
          
         </div>
-  <Footer />
+  
     </section>
     )}
     {step === "last" && (

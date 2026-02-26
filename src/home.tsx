@@ -103,12 +103,12 @@ return(<div className='bg-[#F3F4F6]'>
     {/* Dark overlay */}
     <div className="absolute inset-0 bg-black/45"></div>
 <div className=" absolute  top-[304px] left-[8px] gap-[20px] md:top-[365px] md:gap-[42px] md:left-[48px] ">
-<h1 className=" md:font-bold md:leading-[61px] md:text-[48px] font-bold text-white leading-[40px] md:w-[922px] font-inter tracking-normal text-[32px] ">The Heart of Nigerian Home Cooking
+<h1 className=" md:font-bold md:leading-[61px] md:text-[48px] font-bold text-white leading-[40px] font-inter tracking-normal text-[32px] ">The Heart of Nigerian Home Cooking
 </h1>
 <p className="font-inter md:leading-[42px] md:font-bold md:text-[32px] font-medium text-white text-[16px] leading-[24px] tracking-normal">
     Handcrafted with passion, delivered with care.</p>
     <div className="w-[215px] py-[15px]">
-  <button onClick={() => navigate("/order")} className="bg-[#FF7A18] font-inter tracking-normal text-[16px] 
+  <button onClick={() => navigate("/page")} className="bg-[#FF7A18] font-inter tracking-normal text-[16px] 
   font-semibold leading-[24px] cursor-pointer text-white md:py-4 px-4 py-2 rounded-[10px]">
     Discover what’s new
   </button>
@@ -205,7 +205,7 @@ w-[90%] md:w-[70%] flex items-center gap-2 md:rounded-[8px]'>
     {/* Content */}
     <div className="relative z-10 gap-[30px] py-[10px] md:gap-[10px]">
 
-      <h1 className='md:leading-[140%] md:gap-[27px] md:w-full md:text-[48px] md:font-extrabold w-[350px] text-[32px] text-white font-bold leading-[40px]'>
+      <h1 className='md:leading-[140%] md:gap-[27px] md:w-full md:text-[48px] md:font-extrabold text-[32px] text-white font-bold leading-[40px]'>
         Introducing Our New Menu Addition!
       </h1>
 
@@ -213,7 +213,7 @@ w-[90%] md:w-[70%] flex items-center gap-2 md:rounded-[8px]'>
         Exploring exciting new dishes, crafted with freshest ingredient and authentic Nigeria Flavors.
       </p>
 
-      <button className='py-4 rounded-[10px] font-semibold leading-[24px] px-4 text-[16px] bg-[#FF7A18] text-white cursor-pointer'>
+      <button onClick={() => navigate("/page")} className='py-4 rounded-[10px] font-semibold leading-[24px] px-4 text-[16px] bg-[#FF7A18] text-white cursor-pointer'>
         Discover Whats new
       </button>
 
