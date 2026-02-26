@@ -209,7 +209,7 @@ w-[90%] md:w-[70%] flex items-center gap-2 md:rounded-[8px]'>
         Introducing Our New Menu Addition!
       </h1>
 
-      <p className='mb-4 pt-2 md:w-[38%] md:leading-[34px]  text-white md:text-[24px] font-semibold text-[20px] w-[350px] leading-[28px]'>
+      <p className='mb-4 pt-2 md:w-[38%] md:leading-[34px]  text-white md:text-[24px] font-semibold text-[20px] leading-[28px]'>
         Exploring exciting new dishes, crafted with freshest ingredient and authentic Nigeria Flavors.
       </p>
 
