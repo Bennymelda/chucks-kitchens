@@ -102,7 +102,7 @@ return(<div className='bg-[#F3F4F6]'>
 <div className="image relative">
     {/* Dark overlay */}
     <div className="absolute inset-0 bg-black/45"></div>
-<div className=" md:w-[922px] absolute w-[373px] top-[304px] left-[8px] gap-[20px] md:top-[365px] md:gap-[42px] md:left-[48px] ">
+<div className=" absolute  top-[304px] left-[8px] gap-[20px] md:top-[365px] md:gap-[42px] md:left-[48px] ">
 <h1 className=" md:font-bold md:leading-[61px] md:text-[48px] font-bold text-white leading-[40px] md:w-[922px] font-inter tracking-normal text-[32px] ">The Heart of Nigerian Home Cooking
 </h1>
 <p className="font-inter md:leading-[42px] md:font-bold md:text-[32px] font-medium text-white text-[16px] leading-[24px] tracking-normal">
