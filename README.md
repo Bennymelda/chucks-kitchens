@@ -126,7 +126,9 @@ User authentication and order history.
 
 🖥️ How to Run the Project
 1️⃣ Clone the repository
-git clone https://github.com/yourusername/chucks-kitchen.git
+git clone
+
+‎https://github.com/Bennymelda/chucks-kitchens.git
 cd chucks-kitchen
 2️⃣ Install dependencies
 npm install
