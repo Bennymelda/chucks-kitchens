@@ -156,7 +156,7 @@ return(
     
     <div className='md:pt-5 relative'>
       {step === "cart" && (
-    <div>
+    <section>
 
     <div className="bg-[#F3F4F6] md:px-5 md:pb-10 md:pt-10">
         
@@ -198,12 +198,12 @@ return(
       <button className='cursor-pointer' onClick={() => setStep("delivery")}>Confirm Order</button>
     </div>
     <Footer />
-    </div>
+    </section>
     )}
 
     </div>
     {step === "delivery" && (
-      <div>
+      <section>
         <div className="bg-[#F3F4F6]  px-5 py-20  md:px-60 md:py-30">
     <div className="py-[20px] px-[9px] bg-white flex flex-col gap-[23px] rounded-2xl  gap-[4px]">
         
@@ -254,11 +254,11 @@ return(
     </div>
     </div>
      <Footer />
-      </div>
+      </section>
      
     )}
     {step === "order" && (
-    <div>
+    <section>
     <div className="bg-[#F3F4F6]  px-5 py-20  md:px-60 md:py-30">
     <div className="py-[36px] bg-white px-[7px] md:px-[18px] flex flex-col gap-[18px] rounded-[8px]">
         <h1 className="font-bold text-[32px] md:leading-[42px] leading-[40px] ">Delivery Details</h1>
@@ -288,10 +288,10 @@ onChange={handlePhoneChange} type="text"  placeholder="+234 903 448 1350" classN
     </div>
     </div>
     <Footer />
-</div>
+</section>
     )}
     {step === "bank" && (
-    <div>
+    <section>
         <div className="bg-[#F3F4F6] px-5 py-20  md:px-60 md:py-30">
           <div className=" bg-white py-[18px] md:px-[30px] md:py-[18px] px-[7px] rounded-[8px] flex flex-col gap-[24px]">
             <div className="py-[8px] px-[1px] flex flex-col gap-[24px]">
@@ -375,10 +375,10 @@ onChange={handlePhoneChange} type="text"  placeholder="+234 903 448 1350" classN
          
         </div>
   <Footer />
-    </div>
+    </section>
     )}
     {step === "last" && (
-<div className="relative flex justify-center items-center min-h-screen bg-gray-100">
+<section className="relative flex justify-center items-center min-h-screen bg-gray-100">
       {loading ? (
         // Tailwind spinner
         <div className="relative w-20 h-20 animate-spin">
@@ -435,7 +435,7 @@ onChange={handlePhoneChange} type="text"  placeholder="+234 903 448 1350" classN
         </div>
       )}
      
-    </div>
+    </section>
     
         )}
          < Footer />

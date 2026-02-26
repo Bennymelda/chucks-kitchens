@@ -67,7 +67,7 @@ const navigate = useNavigate();
   return (
     <div>
       
-      <div className='img relative'>
+      <header className='img relative'>
         <div className="absolute inset-0 bg-black/45"></div>
       <div className='w-[373px] md:w-full absolute top-[304px] md:top-[293px] md:left-[48px] md:gap-[11px] flex flex-col gap-[20px] px-[11px] left-[8px]'>
         <p className='font-bold text-[32px] leading-[40px] text-[#ffff] md:font-bold md:text-[48px] md:leading-[61px]'>Chuks  Kitchen</p>
@@ -76,7 +76,7 @@ const navigate = useNavigate();
         Nigerian Home Cooking
         4.8  (1.2k)</p>
       </div>
-      </div>
+      </header>
       <div className='md:py-[82px] md:px-[38px] md:flex md:flex-col md:gap-[40px]   bg-[#F3F4F6] '>
         <div className='py-[26px]  items-start rounded-tr-[14px] rounded-tl-[14px] bg-[#ffff]  flex flex-col gap-[18px]'>
         <button className='pl-4 gap-[10px]  rounded-[14px] font-medium text-[24px] leading-[34px] text-[#000000]'>Menu Categories</button>

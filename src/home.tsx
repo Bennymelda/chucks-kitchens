@@ -136,7 +136,7 @@ w-[90%] md:w-[70%] flex items-center gap-2 md:rounded-[8px]'>
 
 </header>
 
-<div className="bg-[#F3F4F6] gap-[33px]  py-[96px] px-[16px] ">
+<section className="bg-[#F3F4F6] gap-[33px]  py-[96px] px-[16px] ">
 <div>
     <h1 className=" text-center font-semibold text-[24px] leading-[32px] mb-5 tracking-normal">Popular Categories</h1>
 </div>
@@ -158,10 +158,10 @@ w-[90%] md:w-[70%] flex items-center gap-2 md:rounded-[8px]'>
 </div>
 )}
 <p className='text font-[400] text-center pt-5 pb-20 text-[#1E88E5] tracking-[2%] leading-[180%] text-[16px] md:hidden cursor-pointer' onClick={() => navigate("/order")}>View All Categories</p>
-</div>
+</section>
 
 <p className='pb-5 text-center font-semibold text-[24px] leading-[32px] md:mt-20'>Chef'Specials</p>
-<div className='grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-[33px] px-[18px] md:mb-20'>
+<section className='grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-[33px] px-[18px] md:mb-20'>
 
     {visibleItems.map(item=>(
         <div key={item.id} className='bg-white pb-4 pt-[2px] pr-[2px] pb-[46px] pl-[2px] rounded-[14px] gap-[25px]'>
@@ -192,7 +192,7 @@ w-[90%] md:w-[70%] flex items-center gap-2 md:rounded-[8px]'>
         </div>
 
     ))}
-</div>
+</section>
 <p className='text font-[400] text-center pt-5 pb-20 text-[#1E88E5] tracking-[2%] leading-[180%] text-[16px] md:hidden' onClick={() => navigate("/order")}>View All Specials</p>
 <section className="relative">
 
