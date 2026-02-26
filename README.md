@@ -1,73 +1,110 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+‎Chuck's Kitchen Web App 🍴
+‎
+‎A responsive food ordering web application that allows users to browse, select, and order meals with a clean, mobile-first design
+‎
+‎Project Overview
+‎
+‎Chuck's Kitchen is a modern frontend application for food ordering. Users can:
+‎Browse food items by category.
+‎Add items to their cart with quantity selection.
+‎View subtotal, delivery, service fees, and total.
+‎Enter delivery details and payment information.
+‎Navigate seamlessly between pages using a responsive navbar.
+‎
+‎The app is fully responsive, with a hamburger menu for mobile, and dynamic item display depending on screen size.
+‎
+‎
+‎Tech Stack Used
+‎
+‎Technology
+‎Purpose
+‎React
+‎Frontend framework for building UI components
+‎
+‎TypeScript
+‎Adds type safety to React components
+‎
+‎Tailwind CSS
+‎Styling and responsive design
+‎
+‎React Router DOM
+‎Navigation between pages
+‎
+‎React Icons
+‎Displaying icons like cart, hamburger menu, add/remove buttons
+‎
+‎React Hot Toast
+‎Showing toast notifications for actions like adding items to cart
+‎
+‎
+‎Project Structure
+‎Copy code
+‎
+‎src/
+‎├── components/
+‎│   ├── Navbar.tsx
+‎│   ├── Footer.tsx
+‎│   ├── Cart.tsx
+‎│   └── ProductCard.tsx
+‎├── pages/
+‎│   ├── Home.tsx
+‎│   ├── Page.tsx
+‎│   ├── Order.tsx
+‎│   └── Detail.tsx
+‎├── App.tsx
+‎├── index.tsx
+‎└── types.d.ts
+‎Key files:
+‎App.tsx – Main application layout with routing.
+‎Navbar.tsx – Responsive navbar with desktop and mobile (hamburger) menu.
+‎Page.tsx – Displays products, handles category selection, “View All” functionality, and cart additions.
+‎Detail.tsx – Delivery form with validation and phone formatting.
+‎Footer.tsx – Footer component, hidden on mobile screens.
+‎
+‎
+‎Design Interpretation
+‎
+‎The design is based on a mobile-first approach.
+‎Food items are displayed as cards, with quantities and add/remove buttons.
+‎Cart totals are dynamically calculated with subtotal, delivery, service fees, and total.
+‎
+‎Hamburger menu appears on mobile, hiding links and login button.
+‎Input formatting: phone numbers automatically add spaces, and credit card/CVV fields restrict invalid input.
+‎
+‎Assumptions:
+‎
+‎Delivery fee and service fee are fixed.
+‎Tax is currently zero.
+‎
+‎
+‎Limitations & Improvements
+‎
+‎Current Limitations:
+‎
+‎No backend integration; all cart data is stored in React state.
+‎
+‎Payment form doesn’t process real transactions.
+‎
+‎Tax is not dynamically calculated.
+‎Some inputs are not fully masked (e.g., credit card).
+‎
+‎Images on mobile are totally different from image on desktop.
+‎
+‎No button to confirm cart order
+‎
+‎
+‎
+‎Potential Improvements:
+‎
+‎Add backend with database to store orders.
+‎
+‎Implement real payment gateway integration.
+‎
+‎Add button to process payment 
+‎
+‎Enhance accessibility (ARIA labels, keyboard navigation).
+‎
+‎Make image same on both desktop and mobile 
+‎
+‎Add animations for smoother transitions.
+‎
